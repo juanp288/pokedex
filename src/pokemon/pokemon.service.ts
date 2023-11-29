@@ -18,10 +18,17 @@ export class PokemonService {
     private readonly pokemonModel: Model<Pokemon>,
   ) {}
 
-  async create(createPokemonDto: CreatePokemonDto) {
+  async create(data: CreatePokemonDto) {
     try {
-      const pokemon = await this.pokemonModel.create(createPokemonDto);
-      return pokemon;
+      return await this.pokemonModel.create(data);
+    } catch (error) {
+      this.handlerException(error);
+    }
+  }
+
+  async bulk(data: CreatePokemonDto[]) {
+    try {
+      return await this.pokemonModel.insertMany(data);
     } catch (error) {
       this.handlerException(error);
     }
@@ -76,6 +83,10 @@ export class PokemonService {
       throw new UnprocessableEntityException(`Cannot delete ${id}`);
 
     return;
+  }
+
+  async truncate() {
+    return await this.pokemonModel.deleteMany({});
   }
 
   private handlerException(error: any) {
