@@ -12,6 +12,12 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+
+      /* Habilitar para Transformar los DTO a los tipos de datos definido en las clases automaticamente */
+      // transform: true,
+      // transformOptions: {
+      //   enableImplicitConversion: true,
+      // },
     }),
   );
 
