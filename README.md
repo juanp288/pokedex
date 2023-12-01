@@ -15,65 +15,44 @@ Project based on course *Nest: Desarrollo backend escalable con Node* from Udemy
 $ npm i -g @nestjs/cli
 ```
 
-* Install Dependencies
-```bash
-$ npm install
-```
-## Docker
-
-```bash
-# Mongo DB
-$ docker compose up -d
-```
-
 ## Running the app
 
 1. Clonar el repositorio
 2. Ejecutar
 ```
-yarn install
+npm install
 ```
 3. Tener Nest CLI instalado
 ```
 npm i -g @nestjs/cli
 ```
 
-4. Levantar la base de datos
-```
-docker-compose up -d
+4. Docker - Levantar Mongodb
+
+```bash
+docker compose up -d
 ```
 
-5. Clonar el archivo ```.env.template``` y renombar la copia a ```
-.env```
+5. Clonar el archivo ```.env.template``` y renombar la copia a ```.env```
 
 6. Llenar las variables de entorno definidas en el ```.env```
 
 7. Ejecutar la aplicación en dev:
-```
-yarn start:dev
+```bash
+# watch mode
+npm run start:dev
 ```
 
 8. Reconstruir la base de datos con la semilla
 ```
-http://localhost:3000/api/v2/seed
-```
-
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+{url}/api/v2/seed
 ```
 
 # Production Build
 1. Crear el archivo ```.env.prod```
 2. Llenar las variables de entorno de prod
 3. Crear la nueva imagen
-```
+```bash
 docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
 ```
 
@@ -88,7 +67,4 @@ git push heroku <master|main>
 
 * NestJS
 * MongoDB
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+* Docker
