@@ -14,6 +14,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
 
       /* Habilitar para Transformar los DTO a los tipos de datos definido en las clases automaticamente */
+      
       // transform: true,
       // transformOptions: {
       //   enableImplicitConversion: true,
@@ -21,7 +22,7 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
   logger.log(`Server running on ${await app.getUrl()}`);
 }
 bootstrap();
